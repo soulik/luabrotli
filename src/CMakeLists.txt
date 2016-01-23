@@ -1,18 +1,26 @@
 set(luabrotli_src
 	main.cpp
+	objects/Compressor.cpp
+	objects/Decompressor.cpp
+	constants.cpp
 )
 
 set(luabrotli_h
 	common.hpp
+	objects/Compressor.hpp
+	objects/Decompressor.hpp
+	constants.hpp
+	init_classes.hpp
 )
 
 set(luabrotli_sources
-	${luabrotli_src} ${luabrotli_h}
+	${luabrotli_src} ${luabrotli_h} ${brotli_sources}
 )
 
 include_directories(./)
 
 source_group("Header files" FILES ${luabrotli_h})
+source_group("Brotli sources" FILES ${brotli_sources})
 
 set(luabrotli_version_script luabrotli.version)
 
@@ -38,9 +46,7 @@ set_target_properties(luabrotli
     RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/${CMAKE_SYSTEM_PROCESSOR}/bin"
 )
 
-configure_file(brotli.lua ${CMAKE_BINARY_DIR}/${CMAKE_SYSTEM_PROCESSOR}/lib/brotli.lua COPYONLY)
-
 target_link_libraries (luabrotli
-	${LUA_LIBRARY}
+	${LUA_LIBRARY} brotli
 )
 

@@ -6,4 +6,6 @@
 *.so
 *.so.*
 build/*
+tests/*.dll
+tests/*.so
 
