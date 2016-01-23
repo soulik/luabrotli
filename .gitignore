@@ -1,0 +1,9 @@
+*.swp
+*.sdf
+*.suo
+*.opensdf
+*.user
+*.so
+*.so.*
+build/*
+

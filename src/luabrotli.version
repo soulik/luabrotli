@@ -1,0 +1,5 @@
+luabrotli {
+	global: luaopen_luabrotli;
+	local: *;
+};
+
